@@ -28,13 +28,21 @@
 		background: @color-primary-lighter;
 
 		.list-item__done-mark {
-			transform: scale(1);
 			opacity: 1;
+
+			color: @color-primary;
 		}
 
-		.list-item__label {
+		.list-item__label,
+		.list-item__edit {
 			color: @color-gray-concrete;
 			text-decoration: line-through;
+		}
+
+		&:hover {
+			.list-item__done-mark {
+				opacity: 1;
+			}
 		}
 	}
 
@@ -47,10 +55,12 @@
 	}
 
 	&:hover {
-		background: @color-primary-lightest;
-
 		.list-item__remove {
 			opacity: 1;
+		}
+
+		.list-item__done-mark {
+			opacity: .5;
 		}
 	}
 }
@@ -61,15 +71,16 @@
 
 	line-height: @list-item-height;
 
-	color: @color-primary;
+	color: @color-gray-midnight;
 	opacity: 0;
-	transform: scale(.4);
-	transition: opacity @transition-fast transform @transition-slow;
+	transition: all @transition-faster;
 }
 
 .list-item__label {
 	line-height: @list-item-height;
 	color: @color-gray-wetasphalt;
+
+	transition: all @transition-faster;
 }
 
 .list-item__edit {
@@ -77,6 +88,8 @@
 
 	border: none;
 	background: none;
+
+	transition: all @transition-faster;
 }
 
 .list-item__remove {

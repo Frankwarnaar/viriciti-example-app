@@ -1,7 +1,7 @@
 class Todo extends Marionette.ItemView
 	tagName: 'li'
 	className: ->
-		if this.model.get('done')
+		if this.model.get 'done'
 			return 'list-item done'
 		else 
 			return 'list-item'
@@ -9,21 +9,56 @@ class Todo extends Marionette.ItemView
 	template: require './../templates/listitem.jade'
 
 	ui:
-		listItem: '.list-item'
 		label: '.list-item__label'
 		edit: '.list-item__edit'
+		done: '.list-item__done-mark'
 		remove: '.list-item__remove'
 
-	event:
-		'click': 'toggleState'
+	events:
+		'click @ui.done': 'toggleState'
 		'click @ui.remove': 'removeTodo'
+		'dblclick @ui.label': 'editTodo'
+		'keydown @ui.edit' : 'keydownEdit'
+		'focusout @ui.edit': 'focusOutEdit'
 
 	toggleState: ->
-		console.log('fsfdsa')
+		this.model.set 'done', !this.model.get 'done'
+		this.$el.toggleClass 'done'
 
 	removeTodo: ->
-		console.log 'fsaf'
-		this.model.destroy
+		this.model.destroy()
+
+	editTodo: ->
+		this.$el.addClass 'edit'
+		this.ui.edit.focus();
+
+	focusOutEdit: ->
+		this.$el.removeClass 'edit'
+
+		labelText = this.ui.edit.val()
+
+		if labelText
+			this.model.set 'label', this.ui.edit.val()
+			this.ui.label.val this.ui.edit.val()
+
+		else
+			this.ui.label.val this.model.get 'label'
+
+	keydownEdit: (e) ->
+		enter_key = 13
+		esc_key = 27
+
+		if e.which is enter_key
+			this.focusOutEdit()
+			return
+
+		if e.which is esc_key
+			this.ui.edit.val this.model.get 'label'
+			this.ui.label.val this.model.get 'label'
+			this.$el.removeClass 'edit'
+
+	modelEvents:
+		change: 'render'
 
 class TodoList extends Marionette.CollectionView
 	tagName: 'ul'
