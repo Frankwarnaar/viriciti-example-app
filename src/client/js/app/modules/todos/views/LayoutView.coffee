@@ -11,18 +11,9 @@ class LayoutView extends Marionette.LayoutView
 		list: '.list'
 
 	initialize: ->
-		todosCollection = new TodosCollection [
-			{
-				done: false
-				label: 'Shopping'
-			}
-			{
-				done: true
-				label: 'Drinking'
-			}
-		]
+		todosCollection = new TodosCollection
 
-		@formView = new FormView
+		@formView = new FormView collection: todosCollection
 		@listView = new ListView collection: todosCollection
 
 	onBeforeShow: ->
