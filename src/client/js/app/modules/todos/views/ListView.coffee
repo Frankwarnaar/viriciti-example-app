@@ -33,20 +33,20 @@ class Todo extends Marionette.ItemView
 		this.model.destroy()
 
 	onMouseOverRemove: ->
-		this.$el.addClass('remove-hover');
+		this.$el.addClass('remove-hover')
 
 	onMouseOutRemove: ->
-		this.$el.removeClass('remove-hover');
+		this.$el.removeClass('remove-hover')
 
 	onMouseOverDone: ->
-		this.$el.addClass('done-hover');
+		this.$el.addClass('done-hover')
 
 	onMouseOutDone: ->
-		this.$el.removeClass('done-hover');
+		this.$el.removeClass('done-hover')
 
 	editTodo: ->
 		this.$el.addClass 'edit'
-		this.ui.edit.focus();
+		this.ui.edit.focus()
 
 	focusOutEdit: ->
 		this.$el.removeClass 'edit'
