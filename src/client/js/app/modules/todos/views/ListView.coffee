@@ -43,6 +43,7 @@ class Todo extends Marionette.ItemView
 
 		else
 			this.ui.label.val this.model.get 'label'
+			this.ui.edit.val this.model.get 'label'
 
 	keydownEdit: (e) ->
 		enter_key = 13
