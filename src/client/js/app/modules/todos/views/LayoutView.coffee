@@ -4,13 +4,23 @@ FormView = require('./FormView');
 ListView = require('./ListView');
 
 class LayoutView extends Marionette.LayoutView
+
 	template: require "../templates/layout.jade"
 	regions:
-		form: 'form'
+		form: '.form'
 		list: '.list'
 
 	initialize: ->
-		todosCollection = new TodosCollection
+		todosCollection = new TodosCollection [
+			{
+				done: false
+				content: 'kapper'
+			}
+			{
+				done: false
+				content: 'schoenen kopen'
+			}
+		]
 
 		@formView = new FormView
 		@listView = new ListView collection: todosCollection

@@ -1,0 +1,48 @@
+.list-item {
+	margin: 1rem 0;
+	position: relative;
+
+	width: 100%;
+	height: @list-item-height;
+
+	font-size: @font-size-large;
+	font-weight: @font-weight-medium;
+	background: @color-gray-clouds;
+	cursor: pointer;
+
+	transition: background @transition-fast;
+
+	&.done {
+		background: @color-succes-lighter;
+
+		.list-item__done-mark {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+
+	&:hover {
+		background: @color-succes-lightest;
+
+		.list-item__done-mark {
+			opacity: 1;
+		}
+	}
+}
+
+.list-item__done-mark {
+	position: absolute;
+	right: 1rem;
+
+	line-height: @list-item-height;
+
+	color: @color-succes;
+	opacity: 0;
+	transform: scale(.4);
+	transition: opacity @transition-medium transform @transition-slow;
+}
+
+.list-item__content {
+	line-height: @list-item-height;
+	color: @color-gray-wetasphalt;
+}
