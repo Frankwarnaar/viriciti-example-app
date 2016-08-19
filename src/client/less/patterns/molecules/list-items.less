@@ -1,5 +1,6 @@
 .list-item {
 	margin: 1rem 0;
+	padding: 0 2rem;
 	position: relative;
 
 	width: 100%;
@@ -7,24 +8,38 @@
 
 	font-size: @font-size-large;
 	font-weight: @font-weight-medium;
-	background: @color-gray-clouds;
+
+	background: @color-gray-lightest;
 	cursor: pointer;
 
 	transition: background @transition-fast;
 
 	&.done {
-		background: @color-succes-lighter;
+		background: @color-primary-lighter;
 
 		.list-item__done-mark {
 			transform: scale(1);
 			opacity: 1;
 		}
+
+		.list-item__content {
+			color: @color-gray-concrete;
+			text-decoration: line-through;
+		}
+	}
+
+	&.remove-hover {
+		background: @color-secondary-lighter;
+
+		&:hover {
+			background: @color-secondary-lighter;
+		}		
 	}
 
 	&:hover {
-		background: @color-succes-lightest;
+		background: @color-primary-lightest;
 
-		.list-item__done-mark {
+		.list-item__remove {
 			opacity: 1;
 		}
 	}
@@ -32,17 +47,37 @@
 
 .list-item__done-mark {
 	position: absolute;
-	right: 1rem;
+	left: 2rem;
 
 	line-height: @list-item-height;
 
-	color: @color-succes;
+	color: @color-primary;
 	opacity: 0;
 	transform: scale(.4);
-	transition: opacity @transition-medium transform @transition-slow;
+	transition: opacity @transition-fast transform @transition-slow;
 }
 
 .list-item__content {
 	line-height: @list-item-height;
 	color: @color-gray-wetasphalt;
+}
+
+.list-item__remove {
+	position: absolute;
+	right: 2rem;
+
+	opacity: 0;
+	color: @color-secondary;
+	transition: all @transition-fast;
+
+	.glyphicon {
+		position: relative;
+		top: -6px;
+		line-height: 5rem;
+	}
+
+	&:hover,
+	&:active {
+		color: @color-secondary;
+	}
 }
