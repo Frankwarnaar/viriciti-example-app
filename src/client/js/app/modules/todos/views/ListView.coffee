@@ -16,7 +16,11 @@ class Todo extends Marionette.ItemView
 
 	events:
 		'click @ui.done': 'toggleState'
+		'mouseover @ui.done': 'onMouseOverDone'
+		'mouseout @ui.done': 'onMouseOutDone'
 		'click @ui.remove': 'removeTodo'
+		'mouseover @ui.remove': 'onMouseOverRemove'
+		'mouseout @ui.remove': 'onMouseOutRemove'
 		'dblclick @ui.label': 'editTodo'
 		'keydown @ui.edit' : 'keydownEdit'
 		'focusout @ui.edit': 'focusOutEdit'
@@ -27,6 +31,18 @@ class Todo extends Marionette.ItemView
 
 	removeTodo: ->
 		this.model.destroy()
+
+	onMouseOverRemove: ->
+		this.$el.addClass('remove-hover');
+
+	onMouseOutRemove: ->
+		this.$el.removeClass('remove-hover');
+
+	onMouseOverDone: ->
+		this.$el.addClass('done-hover');
+
+	onMouseOutDone: ->
+		this.$el.removeClass('done-hover');
 
 	editTodo: ->
 		this.$el.addClass 'edit'
