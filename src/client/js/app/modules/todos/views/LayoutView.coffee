@@ -14,11 +14,11 @@ class LayoutView extends Marionette.LayoutView
 		todosCollection = new TodosCollection [
 			{
 				done: false
-				content: 'kapper'
+				label: 'Shopping'
 			}
 			{
-				done: false
-				content: 'schoenen kopen'
+				done: true
+				label: 'Drinking'
 			}
 		]
 

@@ -14,6 +14,16 @@
 
 	transition: background @transition-fast;
 
+	&.edit {
+		.list-item__edit {
+			display: block;
+		}
+
+		.list-item__label {
+			display: none;
+		}
+	}
+
 	&.done {
 		background: @color-primary-lighter;
 
@@ -22,7 +32,7 @@
 			opacity: 1;
 		}
 
-		.list-item__content {
+		.list-item__label {
 			color: @color-gray-concrete;
 			text-decoration: line-through;
 		}
@@ -57,26 +67,37 @@
 	transition: opacity @transition-fast transform @transition-slow;
 }
 
-.list-item__content {
+.list-item__label {
 	line-height: @list-item-height;
 	color: @color-gray-wetasphalt;
+}
+
+.list-item__edit {
+	display: none;
+
+	border: none;
+	background: none;
 }
 
 .list-item__remove {
 	position: absolute;
 	right: 2rem;
+	top: 50%;
+	transform: translateY(-50%);
 
 	opacity: 0;
 	color: @color-secondary;
 	transition: all @transition-fast;
 
 	.glyphicon {
-		position: relative;
-		top: -6px;
-		line-height: 5rem;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
 	}
 
 	&:hover,
+	&:visited,
+	&:focus,
 	&:active {
 		color: @color-secondary;
 	}

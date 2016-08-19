@@ -9,6 +9,6 @@ class LayoutView extends Marionette.LayoutView
 		change: 'render'
 
 	ui:
-		content: '#content'
+		label: '#label'
 
 module.exports = LayoutView
