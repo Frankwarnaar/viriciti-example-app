@@ -4,7 +4,6 @@ FormView = require('./FormView');
 ListView = require('./ListView');
 
 class LayoutView extends Marionette.LayoutView
-
 	template: require "../templates/layout.jade"
 	regions:
 		form: '.form'

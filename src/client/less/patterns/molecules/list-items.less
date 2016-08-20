@@ -80,8 +80,12 @@
 
 	cursor: pointer;
 	color: @color-gray-midnight;
-	opacity: 0;
+	opacity: .5;
 	transition: all @transition-faster;
+
+	@media @q-sm-min {
+		opacity: 0;
+	}
 }
 
 .list-item__label {
@@ -106,7 +110,7 @@
 	top: 50%;
 	transform: translateY(-50%);
 
-	opacity: 0;
+	opacity: 1;
 	color: @color-secondary;
 	transition: all @transition-fast;
 
@@ -121,5 +125,9 @@
 	&:focus,
 	&:active {
 		color: @color-secondary;
+	}
+
+	@media @q-sm-min {
+		opacity: 0;
 	}
 }
