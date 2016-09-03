@@ -74,8 +74,12 @@ class Todo extends Marionette.ItemView
 			this.ui.label.val this.model.get 'label'
 			this.$el.removeClass 'edit'
 
+	isDone: ->
+		return this.get 'done'
+
 	modelEvents:
 		change: 'render'
+
 
 class TodoList extends Marionette.CollectionView
 	tagName: 'ul'
