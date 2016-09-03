@@ -13,12 +13,55 @@
 
 .btn--primary {
 	margin-right: 1rem;
+	border: 1px solid @color-primary;
+	border-radius: 0;
+	color: @color-primary;
+	transition: all @transition-fast;
+
+	&:hover,
+	&:active {
+		background: @color-primary;
+		color: @color-lightest;
+	}
+}
+
+.btn--primary-light {
+	margin-right: 1rem;
+	border: 1px solid @color-primary-light;
+	border-radius: 0;
+	color: @color-primary-light;
+	transition: all @transition-fast;
+
+	&:hover,
+	&:active {
+		background: @color-primary-light;
+		color: @color-lightest;
+	}
+}
+
+.btn--secondary {
+	margin-right: 1rem;
+	border: 1px solid @color-secondary;
+	border-radius: 0;
+	color: @color-secondary;
+	transition: all @transition-fast;
+
+	&:hover,
+	&:active {
+		background: @color-secondary;
+		color: @color-lightest;
+	}
+}
+
+.btn--secondary-light {
+	margin-right: 1rem;
 	border: 1px solid @color-secondary-light;
 	border-radius: 0;
 	color: @color-secondary-light;
 	transition: all @transition-fast;
 
-	&:hover {
+	&:hover,
+	&:active {
 		background: @color-secondary-light;
 		color: @color-lightest;
 	}
