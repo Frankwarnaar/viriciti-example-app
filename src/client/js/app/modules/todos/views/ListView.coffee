@@ -1,7 +1,7 @@
 class Todo extends Marionette.ItemView
 	tagName: 'li'
 	className: ->
-		if this.model.get 'done'
+		if @model.get 'done'
 			return 'list-item done'
 		else 
 			return 'list-item'
@@ -26,40 +26,40 @@ class Todo extends Marionette.ItemView
 		'focusout @ui.edit': 'focusOutEdit'
 
 	toggleState: ->
-		this.model.set 'done', !this.model.get 'done'
-		this.$el.toggleClass 'done'
+		@model.set 'done', !@model.get 'done'
+		@$el.toggleClass 'done'
 
 	removeTodo: ->
-		this.model.destroy()
+		@model.destroy()
 
 	onMouseOverRemove: ->
-		this.$el.addClass('remove-hover')
+		@$el.addClass('remove-hover')
 
 	onMouseOutRemove: ->
-		this.$el.removeClass('remove-hover')
+		@$el.removeClass('remove-hover')
 
 	onMouseOverDone: ->
-		this.$el.addClass('done-hover')
+		@$el.addClass('done-hover')
 
 	onMouseOutDone: ->
-		this.$el.removeClass('done-hover')
+		@$el.removeClass('done-hover')
 
 	editTodo: ->
-		this.$el.addClass 'edit'
+		@$el.addClass 'edit'
 		this.ui.edit.focus()
 
 	focusOutEdit: ->
-		this.$el.removeClass 'edit'
+		@$el.removeClass 'edit'
 
 		labelText = this.ui.edit.val()
 
 		if labelText
-			this.model.set 'label', this.ui.edit.val()
+			@model.set 'label', this.ui.edit.val()
 			this.ui.label.val this.ui.edit.val()
 
 		else
-			this.ui.label.val this.model.get 'label'
-			this.ui.edit.val this.model.get 'label'
+			this.ui.label.val @model.get 'label'
+			this.ui.edit.val @model.get 'label'
 
 	keydownEdit: (e) ->
 		enter_key = 13
@@ -70,9 +70,9 @@ class Todo extends Marionette.ItemView
 			return
 
 		if e.which is esc_key
-			this.ui.edit.val this.model.get 'label'
-			this.ui.label.val this.model.get 'label'
-			this.$el.removeClass 'edit'
+			this.ui.edit.val @model.get 'label'
+			this.ui.label.val @model.get 'label'
+			@$el.removeClass 'edit'
 
 	isDone: ->
 		return this.get 'done'
