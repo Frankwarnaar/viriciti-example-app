@@ -12,6 +12,4 @@ class PersonsCollection extends Backbone.Collection
 	serverCreate: (person) =>
 		@add person unless @controls.get "pause"
 
-		@pop() if @length > 20
-
 module.exports = PersonsCollection

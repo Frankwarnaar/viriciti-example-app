@@ -10,6 +10,6 @@ class TodosCollection extends Backbone.Collection
 	serverCreate: (todo) =>
 		@add todo
 
-		@pop() if @length > 5
+		@pop() if @length > 10
 
 module.exports = TodosCollection
