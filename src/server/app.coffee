@@ -29,6 +29,17 @@ persons.on "data", (data) ->
 
 persons.start()
 
+# create a generator of data
+todos = new Generator ['first']
+
+# distribute data over the websockets
+todos.on "data", (data) ->
+	data.timestamp = Date.now()
+	data.label = 'Todo'
+	socket.emit "todos:create", data for socket in sockets
+
+todos.start()
+
 # websocket connection logic
 io.on "connection", (socket) ->
 	# add socket to client sockets
